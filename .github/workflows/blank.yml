@@ -1,0 +1,22 @@
+name: Push File(or Dir) to another repository
+
+on: push
+
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Push to another repo
+      uses: dmnemec/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }} 
+      with:
+        source_file: 'test2.md'
+        destination_repo: 'dwijeshMishra/mytutor'
+        destination_folder: 'test-dir' # optional
+        user_email: 'dwijeshm3@email.com'# your email
+        user_name: 'dwijeshMishra'           # your login
+        commit_message: 'A custom message for the commit'
