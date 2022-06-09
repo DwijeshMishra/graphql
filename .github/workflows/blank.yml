@@ -15,7 +15,7 @@ jobs:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }} 
       with:
         source_file: 'test2.md'
-        destination_repo: 'dwijeshMishra/mytutor'
+        destination_repo: 'dwijeshMishra/mytutor1'
         destination_folder: 'test-dir' # optional
         user_email: 'dwijeshm3@email.com'# your email
         user_name: 'dwijeshMishra'           # your login
