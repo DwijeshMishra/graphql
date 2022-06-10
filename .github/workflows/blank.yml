@@ -11,7 +11,7 @@ jobs:
      
     - name: Push to another repo
       env:
-       api_toke : ${{ secrets.apitoken }}
+       api_token : ${{ secrets.API_TOKEN_GITHUB}}
       run: | 
           chmod +x bash.sh
           sudo ./bash.sh
