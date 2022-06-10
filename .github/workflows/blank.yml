@@ -24,10 +24,6 @@ jobs:
           repository: "DwijeshMishra/${{ matrix.repos }}"
           token: "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"
       
-      - name: Replace file to another repo
-        run: | 
-          cp -r ./project-specific.yaml ./DwijeshMishra/$repo_name/
-      
       - name: test2
         run: |
           cp -r ./project-specific.yaml ./DwijeshMishra/${{ matrix.repos }}/
