@@ -18,8 +18,6 @@ jobs:
 
       - name: Clone Repo to update
         uses: actions/checkout@v2
-        env: 
-          git_token:  {{ secrets.API_TOKEN_GITHUB }} 
         with:
           repository: "DwijeshMishra/${{ matrix.repos }}"
           token: "{{ secrets.API_TOKEN_GITHUB }}"
