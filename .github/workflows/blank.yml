@@ -12,8 +12,6 @@ jobs:
           - "service-account-terraform"
 
     runs-on: ubuntu-20.04
-    env:
-      repo_name: "{{ matrix.repos }}"
     steps:
       - name: Clone Main Repo
         uses: actions/checkout@v2
@@ -22,17 +20,19 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: "DwijeshMishra/${{ matrix.repos }}"
+          path: "../../"
           token: "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"
       
       - name: test2
         run: |
-          cp -r ./project-specific.yaml ./DwijeshMishra/${{ matrix.repos }}/
+          cp -r $GITHUB_WORKSPACE/project-specific.yaml $GITHUB_WORKSPACE/../../${{ matrix.repos }}/
 
       - name: Push to repo
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: feature/$GITHUB_SHA
           message: "Update project-specific.yaml $repo_name by github action"
+          repository: $GITHUB_WORKSPACE/../../${{ matrix.repos }}/
           # push_options: '--force'
 
       - name: Create Pull Request
