@@ -12,6 +12,6 @@ do
     git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
     git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
     git commit -am"update workflow"
-    git push 
+    git push --set-upstream origin feature
     cat .git/config
 done < java-repos.txt
