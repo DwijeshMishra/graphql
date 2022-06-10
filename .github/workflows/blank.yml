@@ -27,16 +27,16 @@ jobs:
         run: |
           ls
           cp -r $GITHUB_WORKSPACE/project-specific.yaml $GITHUB_WORKSPACE//${{ matrix.repos }}/
-          sudo apt update
-          sudo apt install tree
           tree ./
+          cd $GITHUB_WORKSPACE//${{ matrix.repos }}/
+          git remote -v
 
       - name: Push to repo
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: feature/$GITHUB_SHA
           commit_message: "Update project-specific.yaml $repo_name by github action"
-          repository: $GITHUB_WORKSPACE/${{ matrix.repos }}
+          repository: ${{ github.workspace }}/${{ matrix.repos }}
           # push_options: '--force'
 
       - name: Create Pull Request
