@@ -2,9 +2,9 @@ FILENAME="java-repos.txt"
 
 while read -r repo
 do
-    git clone https://DwijeshMishra:$api_token@github.com/DwijeshMishra/$repo.git
+    git clone https://DwijeshMishra:$API_TOKEN@github.com/DwijeshMishra/$repo.git
     cd $repo
-    git remote set-url origin https://DwijeshMishra:$apt_token@github.com/DwijeshMishra/$repo.git
+    git remote set-url origin https://DwijeshMishra:$API_TOKEN@github.com/DwijeshMishra/$repo.git
     git checkout -b feature
     cd ..
     cp project-specific.yaml $repo/  && cp .repo-config  $repo/
