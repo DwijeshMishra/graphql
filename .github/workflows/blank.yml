@@ -20,7 +20,7 @@ jobs:
         with:
           repository: "DwijeshMishra/${{ matrix.repos }}"
           branch: "master"
-          token: "{{ secrets.API_TOKEN_GITHUB }}"
+          ssh-key: "{{ secrets.SSH_KEY }}"
       
       - name: Replace file to another repo
         env:
