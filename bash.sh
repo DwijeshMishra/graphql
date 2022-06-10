@@ -13,6 +13,6 @@ do
     git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
     git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
     git commit -am"update workflow"
-    git push --set-upstream origin feature 
+    git push --set-upstream origin feature "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$repo.git"
     cat .git/config
 done < java-repos.txt
