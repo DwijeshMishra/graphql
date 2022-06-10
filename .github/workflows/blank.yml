@@ -10,4 +10,6 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Push to another repo
-      run: ./bash.sh
+      run: | 
+          chmod +x bash.sh
+          sudo ./bash.sh
