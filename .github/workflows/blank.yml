@@ -12,9 +12,11 @@ jobs:
           - "service-account-terraform"
 
     runs-on: ubuntu-20.04
+    env:
+      repo_name: "{{ matrix.repos }}"
     steps:
-  #    - name: Clone Main Repo
-  #      uses: actions/checkout@v2
+      - name: Clone Main Repo
+        uses: actions/checkout@v2
 
       - name: Clone Repo to update
         uses: actions/checkout@v2
@@ -23,10 +25,12 @@ jobs:
           token: "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"
       
       - name: Replace file to another repo
-        env:
-          repo_name: "{{ matrix.repos }}"
         run: | 
-          cp  ./project-specific.yaml ./DwijeshMishra/$repo_name
+          cp -r ./project-specific.yaml ./DwijeshMishra/$repo_name/
+      
+      - name: test2
+        run: |
+          cp -r ./project-specific.yaml ./DwijeshMishra/${{ matrix.repos }}/
 
       - name: Push to repo
         uses: stefanzweifel/git-auto-commit-action@v4
