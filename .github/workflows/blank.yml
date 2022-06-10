@@ -31,7 +31,7 @@ jobs:
 
       - name: Create commits
         run: |
-          cd $GITHUB_WORKSPACE//${{ matrix.repos }}/
+          cd $GITHUB_WORKSPACE/${{ matrix.repos }}/
           git config user.name 'Github Bot'
           git config user.email "ryo.osive@gmail.com"
           git add .
@@ -40,6 +40,8 @@ jobs:
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
+        with:
+          path: $GITHUB_WORKSPACE/${{ matrix.repos }}
       - name: Check outputs
         if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
