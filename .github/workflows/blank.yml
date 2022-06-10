@@ -38,7 +38,7 @@ jobs:
           git config user.email "ryo.osive@gmail.com"
           git add .
           git commit -m "Add untracked file during workflow"
-          git push -u origin feature/$GITHUB_SHA
+          git push -u origin 'feature/$GITHUB_SHA'
           
       - name: Create Pull Request
         id: cpr
