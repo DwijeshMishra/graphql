@@ -12,5 +12,5 @@ do
     git config --global user.email "github@gmail.com"
     git add . 
     git commit -am"update workflow"
-    git push
+    git push --set-upstream origin feature
 done < java-repos.txt
