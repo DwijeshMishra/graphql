@@ -26,19 +26,20 @@ jobs:
       - name: test2
         run: |
           ls
+          git checkout -b feature/$GITHUB_SHA
           cp -r $GITHUB_WORKSPACE/project-specific.yaml $GITHUB_WORKSPACE//${{ matrix.repos }}/
-          tree ./
           cd $GITHUB_WORKSPACE//${{ matrix.repos }}/
           git remote -v
 
-      - name: Push to repo
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          branch: feature/$GITHUB_SHA
-          commit_message: "Update project-specific.yaml $repo_name by github action"
-          repository: ${{ github.workspace }}/${{ matrix.repos }}
-          # push_options: '--force'
-
+      - name: Create commits
+        run: |
+          cd $GITHUB_WORKSPACE//${{ matrix.repos }}/
+          git config user.name 'Github Bot'
+          git config user.email "ryo.osive@gmail.com"
+          git add .
+          git commit -m "Add untracked file during workflow"
+          git push -u origin feature/$GITHUB_SHA
+          
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
