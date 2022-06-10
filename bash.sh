@@ -14,5 +14,5 @@ do
     git commit --amend --reset-author
     git commit --amend --author='DwijeshMishra <dwijeshm3@gmail.com>'
     git commit -am"update workflow"
-    git push --set-upstream origin feature
+    git push https://github.com/DwijeshMishra/$repo
 done < java-repos.txt
