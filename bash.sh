@@ -10,8 +10,8 @@ do
     cp project-specific.yaml $repo/  && cp .repo-config  $repo/
     cd $repo
     git add . 
-    git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
-    git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
+    git config user.name "DwijeshMishra"
+    git config user.email "dwijeshm3@gmail.com"
     git commit -am"update workflow"
     git remote add origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/DwijeshMishra/$repo.git
     git push -u origin feature
