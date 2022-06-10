@@ -8,6 +8,7 @@ do
     cd ..
     cp project-specific.yaml $repo/  && cp .repo-config  $repo/
     cd $repo
+    git commit --amend --reset-author
     git add . 
     git commit -am"update workflow"
     git push --set-upstream origin feature
