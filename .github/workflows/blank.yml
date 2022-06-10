@@ -8,8 +8,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
+     
     - name: Push to another repo
+      env:
+       api_toke : ${{ secrets.apitoken }}
       run: | 
           chmod +x bash.sh
           sudo ./bash.sh
