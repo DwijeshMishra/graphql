@@ -18,9 +18,11 @@ jobs:
 
       - name: Clone Repo to update
         uses: actions/checkout@v2
+        env: 
+          git_token:  {{ secrets.API_TOKEN_GITHUB }} 
         with:
           repository: "DwijeshMishra/${{ matrix.repos }}"
-          ssh-key: "{{ secrets.SSH_KEY }}"
+          token: "{{ secrets.API_TOKEN_GITHUB }}"
       
       - name: Replace file to another repo
         env:
