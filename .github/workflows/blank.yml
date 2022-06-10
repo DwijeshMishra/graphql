@@ -10,13 +10,4 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Push to another repo
-      uses: dmnemec/copy_file_to_another_repo_action@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }} 
-      with:
-        source_file: 'test.md'
-        destination_repo: 'DwijeshMishra/mytutor1'
-        destination_folder: 'test-dir' # optional
-        user_email: 'dwijeshm3@email.com'# your email
-        user_name: 'dwijeshMishra'           # your login
-        commit_message: 'A custom message for the commit'
+      run: ./bash.sh
