@@ -8,8 +8,8 @@ do
     cd ..
     cp project-specific.yaml $repo/  && cp .repo-config  $repo/
     cd $repo
-    git config --global user.name "test"
-    git config --global user.email "test@gamil.com"
+    git config --global user.name "dwijeshMishra"
+    git config --global user.email "dwijeshm3@gamil.com"
     git add . 
     git commit -am"update workflow"
     git push --set-upstream origin feature
