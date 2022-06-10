@@ -2,7 +2,7 @@ FILENAME="java-repos.txt"
 
 while read -r repo
 do
-    git clone https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/DwijeshMishra/$repo.git
+    git clone https://DwijeshMishra:$GITHUB_TOKEN@github.com/DwijeshMishra/$repo.git
     cd $repo
     git remote set-url origin https://DwijeshMishra:$GITHUB_TOKEN@github.com/DwijeshMishra/$repo.git
     git checkout -b feature
@@ -13,7 +13,7 @@ do
     git config user.name "DwijeshMishra"
     git config user.email "dwijeshm3@gmail.com"
     git commit -am"update workflow"
-    git remote add origin https://DwijeshMishra:$GITHUB_TOKEN@github.com/DwijeshMishra/$repo.git
+    
     git push -u origin feature
     cat .git/config
 done < java-repos.txt 
