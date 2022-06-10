@@ -41,7 +41,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v4
         with:
-          path: $GITHUB_WORKSPACE/${{ matrix.repos }}
+          path: "${{ github.workspace }}/${{ matrix.repos }}"
       - name: Check outputs
         if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
