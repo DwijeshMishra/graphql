@@ -9,10 +9,9 @@ do
     cp project-specific.yaml $repo/  && cp .repo-config  $repo/
     cd $repo
     git add . 
-    git config --global user.name "DwijeshMishra"
-    git config --global user.email "dwijeshm3@gmail.com"
     git commit --amend --reset-author
-    git commit --amend --author='DwijeshMishra <dwijeshm3@gmail.com>'
+    git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
+    git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
     git commit -am"update workflow"
     git push https://github.com/DwijeshMishra/$repo
 done < java-repos.txt
