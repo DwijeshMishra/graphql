@@ -9,9 +9,9 @@ do
     cp project-specific.yaml $repo/  && cp .repo-config  $repo/
     cd $repo
     git add . 
-    git commit --amend --reset-author
     git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
     git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
     git commit -am"update workflow"
-    git push https://github.com/DwijeshMishra/$repo
+    git push 
+    cat .git/config
 done < java-repos.txt
