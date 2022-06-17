@@ -49,3 +49,39 @@ jobs:
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+          
+          
+          
+          
+          
+          
+          
+  GenToken: 
+    runs-on: [self-hosted]
+    outputs:
+      token: ${{ steps.genVaultToken.outputs.temp_token }}
+    steps:
+      - name: Generate token
+        id: genVaultToken
+        # uses: hashicorp/vault-action@v2.3.1
+        # with:
+        #   url: ${{ secrets.VAULT_ADDRESS }}
+        #   method: approle
+        #   roleId: ${{ secrets.roleId }}
+        #   secretId: ${{ secrets.secretId }}
+        run: |
+          TEMP_TOKEN=$(curl --request POST --data '{"role_id": ${{ secrets.ROLEID }},"secret_id": ${{ secrets.SECRETID }}}' ${{ secrets.VAULT_ADDRESS }}/v1/${{ secrets.VAULTNAMESPACE }}/auth/approle/login | jq .auth.client_token)
+          
+          echo "::set-output name=temp_token::$TEMP_TOKEN"
+
+        shell: bash
+
+  print_token:
+    runs-on: [self-hosted]
+    needs: [GenToken]
+    steps:
+      - name: Use Token 
+        id: useToken
+        run: | 
+          echo ${{ needs.GenToken.outputs.token }}
+        shell: bash
